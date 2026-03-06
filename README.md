@@ -20,8 +20,8 @@ A full-stack task management web app with time-based scheduling, email reminders
 - **Deployment:** Docker & Docker Compose
 
 ## Screenshot
+<img width="1440" height="820" alt="Screenshot 2026-03-06 at 8 13 06 AM" src="https://github.com/user-attachments/assets/6ad5d9e5-5193-46cc-8111-16fe939a5971" />
 
-![Daily Planner Screenshot](public/images/screenshot.png)
 
 ## Getting Started
 
