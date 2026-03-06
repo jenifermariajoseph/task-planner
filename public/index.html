@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Planner</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="planner-bg">
+    <div class="planner-card">
+
+      <!-- Header -->
+      <div class="planner-header">
+        <div class="title-box">TO DO</div>
+        <div class="sun-container">
+          <img id="sun-img" src="images/sun-meh.png" alt="Sun buddy" />
+        </div>
+      </div>
+
+      <!-- Add Task Form -->
+      <form id="task-form" class="add-task-row">
+        <input
+          type="text"
+          id="task-input"
+          placeholder="Add a new task..."
+          required
+        />
+        <input type="time" id="time-input" />
+        <button type="submit" class="add-btn">+</button>
+      </form>
+
+      <!-- Task List -->
+      <ul id="task-list" class="task-list"></ul>
+
+      <!-- Clouds decoration -->
+      <div class="clouds">
+        <svg class="cloud" viewBox="0 0 60 30" width="40" height="20">
+          <ellipse cx="20" cy="20" rx="18" ry="10" fill="#d6e4f0"/>
+          <ellipse cx="35" cy="15" rx="14" ry="10" fill="#d6e4f0"/>
+          <ellipse cx="45" cy="20" rx="12" ry="8" fill="#d6e4f0"/>
+        </svg>
+        <svg class="cloud" viewBox="0 0 60 30" width="40" height="20">
+          <ellipse cx="20" cy="20" rx="18" ry="10" fill="#d6e4f0"/>
+          <ellipse cx="35" cy="15" rx="14" ry="10" fill="#d6e4f0"/>
+          <ellipse cx="45" cy="20" rx="12" ry="8" fill="#d6e4f0"/>
+        </svg>
+        <svg class="cloud" viewBox="0 0 60 30" width="40" height="20">
+          <ellipse cx="20" cy="20" rx="18" ry="10" fill="#d6e4f0"/>
+          <ellipse cx="35" cy="15" rx="14" ry="10" fill="#d6e4f0"/>
+          <ellipse cx="45" cy="20" rx="12" ry="8" fill="#d6e4f0"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

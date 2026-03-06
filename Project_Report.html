@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cloud-Ready Daily Planner System - Project Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a2e;
+      line-height: 1.7;
+      background: #fff;
+      padding: 60px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media print {
+      body { padding: 40px 50px; }
+      .page-break { page-break-before: always; }
+    }
+
+    /* Cover Section */
+    .cover {
+      text-align: center;
+      padding: 80px 0 60px;
+      border-bottom: 3px solid #4a3728;
+      margin-bottom: 50px;
+    }
+
+    .cover h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #4a3728;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .cover .subtitle {
+      font-size: 18px;
+      color: #8a7565;
+      margin-bottom: 40px;
+    }
+
+    .cover-meta {
+      font-size: 15px;
+      color: #555;
+      line-height: 2;
+    }
+
+    .cover-meta strong { color: #1a1a2e; }
+
+    /* Section Headings */
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #4a3728;
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0e6d8;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #5a4738;
+      margin: 24px 0 10px;
+    }
+
+    p { margin-bottom: 14px; font-size: 15px; }
+
+    /* Lists */
+    ul, ol {
+      margin: 10px 0 18px 24px;
+      font-size: 15px;
+    }
+
+    li { margin-bottom: 8px; }
+
+    /* Code */
+    code {
+      font-family: 'Fira Code', monospace;
+      background: #f5f0eb;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #4a3728;
+    }
+
+    pre {
+      background: #faf6f1;
+      border: 1px solid #e8ddd0;
+      border-radius: 8px;
+      padding: 18px 20px;
+      overflow-x: auto;
+      margin: 14px 0 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #3a2a1a;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 24px;
+      font-size: 14px;
+    }
+
+    th {
+      background: #4a3728;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8ddd0;
+    }
+
+    tr:nth-child(even) td { background: #faf6f1; }
+
+    /* Highlight Box */
+    .highlight {
+      background: linear-gradient(135deg, #fdf6ee, #f5ede3);
+      border-left: 4px solid #f9d77e;
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0 24px;
+      font-size: 14px;
+    }
+
+    .highlight strong { color: #4a3728; }
+
+    /* Architecture diagram (text-based) */
+    .arch-box {
+      background: #faf6f1;
+      border: 2px solid #e8ddd0;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 2;
+      margin: 20px 0;
+      white-space: pre;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 2px solid #e8ddd0;
+      text-align: center;
+      font-size: 13px;
+      color: #8a7565;
+    }
+
+    .footer-graphic {
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .footer-graphic svg {
+      display: inline-block;
+      opacity: 0.85;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f9d77e;
+      color: #4a3728;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 2px 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div class="cover">
+    <h1>Cloud-Ready Daily Planner System</h1>
+    <p class="subtitle">A Full-Stack Containerized Task Management Application with Email Reminders</p>
+    <div class="cover-meta">
+      <strong>Developed by:</strong> Jenifer Maria Joseph<br>
+      <strong>Date:</strong> March 2026<br>
+      <strong>Technologies:</strong>
+      <span class="tag">Node.js</span>
+      <span class="tag">Express</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">Docker</span>
+      <span class="tag">AWS EC2</span>
+      <span class="tag">Nodemailer</span>
+    </div>
+  </div>
+
+  <!-- 1. INTRODUCTION -->
+  <h2>1. Introduction</h2>
+  <p>
+    The <strong>Cloud-Ready Daily Planner</strong> is a full-stack web application designed to help users manage their daily tasks effectively. It features a custom-designed UI with an interactive animated character, real-time browser notifications, scheduled email reminders, and is fully containerized for cloud deployment.
+  </p>
+  <p>
+    This project demonstrates end-to-end software development skills &mdash; from frontend design and backend API development to database management, containerization with Docker, and production deployment on AWS EC2.
+  </p>
+
+  <!-- 2. OBJECTIVE -->
+  <h2>2. Objective</h2>
+  <ul>
+    <li>Build a production-grade task management application from scratch</li>
+    <li>Implement a RESTful API with CRUD operations backed by PostgreSQL</li>
+    <li>Add real-time reminder systems (browser notifications + email)</li>
+    <li>Containerize the entire stack using Docker and Docker Compose</li>
+    <li>Deploy to a live cloud server (AWS EC2) accessible via public IP</li>
+  </ul>
+
+  <!-- 3. WHY THIS PROJECT -->
+  <h2>3. Why I Chose This Project</h2>
+
+  <h3>3.1 Real-World Relevance</h3>
+  <p>
+    Task management is a universal need, and building one from scratch exposes every layer of modern web development. Unlike tutorial-based to-do apps, this project includes <strong>email automation</strong>, <strong>scheduled background jobs</strong>, <strong>cloud deployment</strong>, and <strong>containerization</strong> &mdash; skills that are directly applicable to real-world engineering roles.
+  </p>
+
+  <h3>3.2 Full-Stack Skill Demonstration</h3>
+  <p>
+    This project covers every major area of software development:
+  </p>
+  <table>
+    <tr><th>Skill Area</th><th>Implementation</th></tr>
+    <tr><td>Frontend Development</td><td>Custom HTML/CSS/JS with responsive design, animations, and the Notification API</td></tr>
+    <tr><td>Backend Development</td><td>Node.js + Express REST API with input validation and error handling</td></tr>
+    <tr><td>Database Management</td><td>PostgreSQL with proper schema design (SERIAL, TIMESTAMP, BOOLEAN types)</td></tr>
+    <tr><td>Background Processing</td><td>Cron-based job scheduler running every minute for email reminders</td></tr>
+    <tr><td>Email Integration</td><td>Nodemailer with Gmail App Passwords for secure SMTP delivery</td></tr>
+    <tr><td>Containerization</td><td>Docker + Docker Compose with multi-service orchestration</td></tr>
+    <tr><td>Cloud Deployment</td><td>AWS EC2 instance with SSH access and public-facing web server</td></tr>
+    <tr><td>DevOps</td><td>Environment variable management, timezone configuration, persistent volumes</td></tr>
+  </table>
+
+  <h3>3.3 Cloud-Native Architecture</h3>
+  <p>
+    I chose Docker and AWS specifically to learn <strong>industry-standard deployment practices</strong>. Running the application on EC2 with Docker Compose mirrors how production services are deployed in real companies, making this project a practical learning experience beyond just coding.
+  </p>
+
+  <!-- 4. SYSTEM ARCHITECTURE -->
+  <h2>4. System Architecture</h2>
+
+  <div class="arch-box">
++-------------------+         +-------------------+         +------------------+
+|                   |  HTTP   |                   |  SQL    |                  |
+|   Browser Client  | ------> |   Node.js/Express | ------> |   PostgreSQL     |
+|   (HTML/CSS/JS)   | <------ |   REST API        | <------ |   Database       |
+|                   |  JSON   |   Port 3000       |         |   Port 5432      |
++-------------------+         +--------+----------+         +------------------+
+                                       |
+                              +--------+----------+
+                              |   Cron Scheduler   |
+                              |   (every 1 min)    |
+                              +--------+----------+
+                                       |
+                              +--------+----------+
+                              |   Nodemailer       |
+                              |   Gmail SMTP       |
+                              +-------------------+</div>
+
+  <div class="highlight">
+    <strong>Deployment:</strong> The entire stack runs inside <strong>Docker containers</strong> on an <strong>AWS EC2</strong> instance (Ubuntu), with PostgreSQL data persisted via Docker volumes.
+  </div>
+
+  <!-- 5. FEATURES -->
+  <h2>5. Features Implemented</h2>
+
+  <h3>5.1 Task Management (CRUD API)</h3>
+  <table>
+    <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+    <tr><td><code>GET</code></td><td><code>/api/tasks</code></td><td>Fetch all tasks (ordered by latest first)</td></tr>
+    <tr><td><code>POST</code></td><td><code>/api/tasks</code></td><td>Create a new task with optional due time</td></tr>
+    <tr><td><code>PATCH</code></td><td><code>/api/tasks/:id</code></td><td>Toggle task completion status</td></tr>
+    <tr><td><code>DELETE</code></td><td><code>/api/tasks/:id</code></td><td>Delete a task permanently</td></tr>
+  </table>
+
+  <h3>5.2 Interactive Sun Character</h3>
+  <p>
+    The UI features a cute animated sun character that reacts to task completion:
+  </p>
+  <ul>
+    <li><strong>Meh face</strong> &mdash; when tasks are incomplete or no tasks exist</li>
+    <li><strong>Happy face</strong> &mdash; when all tasks are marked complete (with a bounce animation)</li>
+  </ul>
+  <p>This gamification element encourages users to complete their tasks, adding a layer of emotional engagement to an otherwise utilitarian tool.</p>
+
+  <h3>5.3 Browser Notifications</h3>
+  <p>
+    When a task has a due time, the app schedules a <strong>browser notification</strong> using the Web Notification API. A <code>setTimeout</code> is calculated based on the difference between the due time and the current time, firing an OS-level notification when the task is due.
+  </p>
+
+  <h3>5.4 Email Reminders (Automated)</h3>
+  <p>
+    A <strong>cron job</strong> runs every minute on the server, querying for tasks that are:
+  </p>
+  <ul>
+    <li>Not completed (<code>completed = false</code>)</li>
+    <li>Past their due time (<code>due_time &lt;= NOW()</code>)</li>
+    <li>Not yet emailed (<code>email_sent = false</code>)</li>
+  </ul>
+  <p>
+    To prevent duplicate emails, the system marks <code>email_sent = true</code> <strong>before</strong> sending the email &mdash; an idempotent design pattern that ensures reliability even if the email service is slow.
+  </p>
+
+  <h3>5.5 Custom-Designed UI</h3>
+  <p>
+    The frontend uses a warm, hand-drawn aesthetic with:
+  </p>
+  <ul>
+    <li><strong>Patrick Hand</strong> and <strong>Nunito</strong> Google Fonts for a friendly, approachable feel</li>
+    <li>A decorative <strong>bow.png border frame</strong> stretched across the full viewport</li>
+    <li>Custom-styled checkboxes with yellow fill and brown checkmarks</li>
+    <li>Smooth slide-in animations for new tasks</li>
+    <li>Cloud decorations at the bottom of the card</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <!-- 6. TECH STACK -->
+  <h2>6. Technology Stack &amp; Justifications</h2>
+
+  <table>
+    <tr><th>Technology</th><th>Purpose</th><th>Why I Chose It</th></tr>
+    <tr>
+      <td><strong>Node.js</strong></td>
+      <td>Server runtime</td>
+      <td>Non-blocking I/O is ideal for handling concurrent API requests and background tasks. JavaScript on both frontend and backend simplifies development.</td>
+    </tr>
+    <tr>
+      <td><strong>Express.js</strong></td>
+      <td>Web framework</td>
+      <td>Minimal, flexible, and the most widely-used Node.js framework. Perfect for building REST APIs quickly without unnecessary overhead.</td>
+    </tr>
+    <tr>
+      <td><strong>PostgreSQL</strong></td>
+      <td>Database</td>
+      <td>A robust, ACID-compliant relational database. Chose it over MongoDB because tasks have a fixed schema (id, title, due_time, completed, email_sent) that benefits from structured storage and SQL queries.</td>
+    </tr>
+    <tr>
+      <td><strong>node-cron</strong></td>
+      <td>Job scheduling</td>
+      <td>Lightweight in-process cron scheduler. No need for external services like Redis or RabbitMQ for a simple per-minute check.</td>
+    </tr>
+    <tr>
+      <td><strong>Nodemailer</strong></td>
+      <td>Email delivery</td>
+      <td>The standard Node.js library for sending emails. Gmail App Passwords provide secure SMTP access without exposing the main account password.</td>
+    </tr>
+    <tr>
+      <td><strong>Docker</strong></td>
+      <td>Containerization</td>
+      <td>Ensures the application runs identically in development and production. Eliminates "works on my machine" problems by packaging the app with all its dependencies.</td>
+    </tr>
+    <tr>
+      <td><strong>Docker Compose</strong></td>
+      <td>Multi-container orchestration</td>
+      <td>Manages both the app and database containers as a single unit with networking, volumes, and environment variables configured declaratively.</td>
+    </tr>
+    <tr>
+      <td><strong>AWS EC2</strong></td>
+      <td>Cloud hosting</td>
+      <td>Industry-standard cloud platform. Provides a full Linux VM with SSH access, giving complete control over the deployment environment.</td>
+    </tr>
+  </table>
+
+  <!-- 7. DATABASE SCHEMA -->
+  <h2>7. Database Schema</h2>
+  <pre>
+CREATE TABLE tasks (
+    id          SERIAL PRIMARY KEY,
+    title       TEXT NOT NULL,
+    due_time    TIMESTAMP,          -- nullable (tasks without deadlines)
+    completed   BOOLEAN DEFAULT false,
+    email_sent  BOOLEAN DEFAULT false
+);</pre>
+
+  <div class="highlight">
+    <strong>Design Decision:</strong> The <code>due_time</code> column uses <code>TIMESTAMP</code> (not <code>TEXT</code>) to enable proper time comparisons in SQL queries like <code>due_time &lt;= NOW()</code>. The <code>email_sent</code> flag ensures idempotent email delivery.
+  </div>
+
+  <!-- 8. DOCKER CONFIGURATION -->
+  <h2>8. Docker Configuration</h2>
+
+  <h3>8.1 Dockerfile</h3>
+  <pre>
+FROM node:20
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node", "index.js"]</pre>
+
+  <h3>8.2 Docker Compose</h3>
+  <pre>
+services:
+  db:
+    image: postgres:14
+    command: postgres -c timezone=Asia/Kolkata
+    environment:
+      TZ: Asia/Kolkata
+      POSTGRES_USER: planner
+      POSTGRES_PASSWORD: plannerpass
+      POSTGRES_DB: planner
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      TZ: Asia/Kolkata
+      DB_HOST: db
+      DB_USER: planner
+      ...
+    depends_on:
+      - db
+
+volumes:
+  pgdata:</pre>
+
+  <div class="highlight">
+    <strong>Timezone Handling:</strong> Both containers are configured with <code>TZ: Asia/Kolkata</code>, and PostgreSQL receives an additional <code>-c timezone=Asia/Kolkata</code> flag to ensure <code>NOW()</code> returns IST, matching the user's local timezone for accurate reminder scheduling.
+  </div>
+
+  <!-- 9. DEPLOYMENT -->
+  <h2>9. AWS EC2 Deployment</h2>
+  <ol>
+    <li><strong>Instance Setup:</strong> Launched an Ubuntu EC2 instance with a security group allowing inbound traffic on ports 22 (SSH), 3000 (App), and 5432 (PostgreSQL).</li>
+    <li><strong>SSH Access:</strong> Connected via <code>ssh -i planner-key.pem ubuntu@&lt;public-ip&gt;</code></li>
+    <li><strong>Docker Installation:</strong> Installed Docker and Docker Compose on the EC2 instance.</li>
+    <li><strong>Code Transfer:</strong> Uploaded the project files to the server.</li>
+    <li><strong>Launch:</strong> Ran <code>docker-compose up -d --build</code> to build and start both containers.</li>
+    <li><strong>Database Init:</strong> Created the tasks table inside the running PostgreSQL container.</li>
+    <li><strong>Result:</strong> Application accessible at <code>http://&lt;public-ip&gt;:3000</code></li>
+  </ol>
+
+  <div class="page-break"></div>
+
+  <!-- 10. CHALLENGES -->
+  <h2>10. Challenges Faced &amp; Solutions</h2>
+
+  <table>
+    <tr><th>Challenge</th><th>Solution</th></tr>
+    <tr>
+      <td>Timestamp stored as text caused SQL comparison failures</td>
+      <td>Kept <code>TIMESTAMP</code> column type; server converts <code>"HH:MM"</code> input to a proper <code>Date</code> object using <code>setHours()</code> / <code>setMinutes()</code></td>
+    </tr>
+    <tr>
+      <td>Time mismatch between input and display</td>
+      <td>Server builds timestamp using local time methods instead of UTC string parsing. Client reads with <code>new Date(iso).getHours()</code> which auto-converts to local.</td>
+    </tr>
+    <tr>
+      <td>Duplicate email reminders</td>
+      <td>Implemented idempotent pattern: set <code>email_sent = true</code> <em>before</em> calling <code>sendMail()</code>, preventing race conditions between cron ticks.</td>
+    </tr>
+    <tr>
+      <td>Browser notifications not appearing on macOS</td>
+      <td>Identified that macOS Focus/Do Not Disturb mode was silently blocking notifications. Documented the requirement to disable DND.</td>
+    </tr>
+    <tr>
+      <td>Docker container timezone defaulting to UTC</td>
+      <td>Added <code>TZ: Asia/Kolkata</code> environment variable and <code>postgres -c timezone=Asia/Kolkata</code> command to align all services with IST.</td>
+    </tr>
+    <tr>
+      <td>Port conflict during Docker deployment</td>
+      <td>Identified and killed the local Node.js process occupying port 3000 before starting Docker containers.</td>
+    </tr>
+    <tr>
+      <td>Old docker-compose v1 on EC2 had <code>ContainerConfig</code> bug</td>
+      <td>Worked around by running <code>docker-compose down</code> first, then <code>up --build</code> with fresh containers.</td>
+    </tr>
+  </table>
+
+  <!-- 11. SIGNIFICANCE -->
+  <h2>11. Significance of This Project</h2>
+
+  <h3>11.1 Industry-Relevant Skills</h3>
+  <p>
+    This project demonstrates proficiency in the exact tools and workflows used by professional software teams: REST APIs, relational databases, Docker containers, cloud deployment, and automated background processing. Each component was built from scratch, not generated by a framework.
+  </p>
+
+  <h3>11.2 Production-Grade Practices</h3>
+  <ul>
+    <li><strong>Environment variable management</strong> &mdash; credentials never hardcoded; <code>.env</code> excluded from Docker images via <code>.dockerignore</code></li>
+    <li><strong>Idempotent operations</strong> &mdash; email reminders cannot be sent twice for the same task</li>
+    <li><strong>Persistent storage</strong> &mdash; PostgreSQL data survives container restarts via Docker volumes</li>
+    <li><strong>Graceful fallbacks</strong> &mdash; <code>db.js</code> uses env vars with local defaults, so the app works both locally and in Docker</li>
+    <li><strong>Timezone-aware architecture</strong> &mdash; all services aligned to the user's timezone for accurate scheduling</li>
+  </ul>
+
+  <h3>11.3 End-to-End Ownership</h3>
+  <p>
+    From designing the UI and writing the API, to debugging email delivery and configuring AWS security groups &mdash; this project demonstrates the ability to independently own and deliver a complete software product, covering all layers of the stack.
+  </p>
+
+  <!-- 12. PROJECT STRUCTURE -->
+  <h2>12. Project Structure</h2>
+  <pre>
+daily-planner/
+  index.js              # Express server, API routes, cron scheduler, email
+  db.js                 # PostgreSQL connection pool (env-var driven)
+  package.json          # Dependencies: express, pg, node-cron, nodemailer, dotenv
+  Dockerfile            # Node.js 20 container image
+  docker-compose.yml    # Multi-service: app + PostgreSQL
+  .dockerignore         # Excludes node_modules and .env
+  .env                  # Environment variables (not committed)
+  planner-key.pem       # AWS EC2 SSH key (not committed)
+  public/
+    index.html          # Main HTML page
+    style.css           # Custom styling with animations
+    script.js           # Frontend logic, Notification API, fetch calls
+    images/
+      sun-happy.png     # Happy sun (all tasks done)
+      sun-meh.png       # Meh sun (tasks incomplete)
+      bow.png           # Decorative border frame</pre>
+
+  <!-- 13. FUTURE SCOPE -->
+  <h2>13. Future Scope</h2>
+  <ul>
+    <li><strong>User Authentication</strong> &mdash; Add login/signup with JWT tokens for multi-user support</li>
+    <li><strong>HTTPS with Nginx</strong> &mdash; Add a reverse proxy with SSL certificates (Let's Encrypt)</li>
+    <li><strong>CI/CD Pipeline</strong> &mdash; Automate deployments with GitHub Actions</li>
+    <li><strong>Task Categories &amp; Priorities</strong> &mdash; Organize tasks with labels and priority levels</li>
+    <li><strong>Mobile Responsive PWA</strong> &mdash; Convert to a Progressive Web App for mobile use</li>
+    <li><strong>Custom Domain</strong> &mdash; Map a domain name to the EC2 instance</li>
+  </ul>
+
+  <!-- 14. CONCLUSION -->
+  <h2>14. Conclusion</h2>
+  <p>
+    The Cloud-Ready Daily Planner System is a comprehensive full-stack project that goes beyond a simple to-do application. By integrating real-time notifications, automated email reminders, containerized deployment, and cloud hosting, it demonstrates a strong understanding of modern software engineering practices. Every technical decision &mdash; from choosing PostgreSQL over NoSQL to implementing idempotent email delivery &mdash; was made with production readiness in mind.
+  </p>
+  <p>
+    This project serves as both a functional productivity tool and a portfolio piece that showcases end-to-end development, DevOps, and cloud deployment skills.
+  </p>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-graphic">
+      <svg width="200" height="120" viewBox="0 0 393 705" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="495.002" cy="495.002" r="495.002" transform="matrix(1 0 0 -1 -298.503 990.004)" fill="url(#paint0_linear_2386_9266)"/>
+        <circle cx="495.002" cy="495.002" r="494.502" transform="matrix(1 0 0 -1 -298.503 990.004)" stroke="#9333EA" stroke-opacity="0.2"/>
+        <circle cx="396.076" cy="396.076" r="396.076" transform="matrix(1 0 0 -1 -199.577 980.312)" fill="url(#paint1_linear_2386_9266)"/>
+        <circle cx="396.076" cy="396.076" r="395.576" transform="matrix(1 0 0 -1 -199.577 980.312)" stroke="#9333EA" stroke-opacity="0.2"/>
+        <circle cx="302.747" cy="302.747" r="302.747" transform="matrix(1 0 0 -1 -106.249 946.465)" fill="url(#paint2_linear_2386_9266)"/>
+        <circle cx="302.747" cy="302.747" r="302.247" transform="matrix(1 0 0 -1 -106.249 946.465)" stroke="#9333EA" stroke-opacity="0.2"/>
+        <circle cx="229.006" cy="229.006" r="229.006" transform="matrix(1 0 0 -1 -32.5068 917.34)" fill="url(#paint3_linear_2386_9266)"/>
+        <circle cx="229.006" cy="229.006" r="228.506" transform="matrix(1 0 0 -1 -32.5068 917.34)" stroke="#9333EA" stroke-opacity="0.2"/>
+        <defs>
+          <linearGradient id="paint0_linear_2386_9266" x1="495.002" y1="0" x2="495.002" y2="614.819" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFC4C5"/>
+            <stop offset="1" stop-color="white"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear_2386_9266" x1="396.076" y1="0" x2="396.076" y2="491.947" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFC4C5"/>
+            <stop offset="1" stop-color="white"/>
+          </linearGradient>
+          <linearGradient id="paint2_linear_2386_9266" x1="302.747" y1="0" x2="302.747" y2="376.028" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFC4C5"/>
+            <stop offset="1" stop-color="white"/>
+          </linearGradient>
+          <linearGradient id="paint3_linear_2386_9266" x1="229.006" y1="0" x2="229.006" y2="284.438" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFC4C5"/>
+            <stop offset="1" stop-color="white"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <p>Cloud-Ready Daily Planner System &bull; Jenifer Maria Joseph &bull; March 2026</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 1360.01 1360.01" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 5">
+<circle id="Ellipse 7" cx="680.005" cy="680.005" r="679.505" stroke="var(--stroke-0, #9333EA)" stroke-opacity="0.2"/>
+<circle id="Ellipse 5" cx="680.005" cy="560.005" r="532.19" stroke="var(--stroke-0, #9333EA)" stroke-opacity="0.3"/>
+<g id="Ellipse 3">
+<circle cx="680.005" cy="480.005" r="407.171" fill="var(--fill-0, #FAF1E8)"/>
+<circle cx="680.005" cy="480.005" r="406.671" stroke="var(--stroke-0, #9333EA)" stroke-opacity="0.5"/>
+</g>
+<g id="Ellipse 2">
+<circle cx="680.005" cy="420.005" r="307.995" fill="var(--fill-0, #FAF1E8)"/>
+<circle cx="680.005" cy="420.005" r="307.495" stroke="var(--stroke-0, #9333EA)" stroke-opacity="0.8"/>
+</g>
+</g>
+</svg>
